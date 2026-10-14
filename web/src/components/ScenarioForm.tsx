@@ -175,17 +175,40 @@ export function ScenarioForm({
 
       <div>
         <label className="mb-1 block text-sm font-medium">Language</label>
-        <input
-          className="w-24 rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+        <select
+          className="w-48 rounded-[var(--radius-md)] border px-3 py-2 text-sm"
           style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
           value={value.language}
-          maxLength={2}
-          onChange={(e) => set('language', e.target.value.toLowerCase())}
-        />
+          onChange={(e) => set('language', e.target.value)}
+        >
+          {LANGUAGES.map((lang) => (
+            <option key={lang.code} value={lang.code}>
+              {lang.label} ({lang.code})
+            </option>
+          ))}
+        </select>
+        <p className="mt-1.5 text-xs" style={{ color: 'var(--color-ink-muted)' }}>
+          Passed to the generator prompt as the target language for the simulation content.
+        </p>
       </div>
     </form>
   )
 }
+
+const LANGUAGES = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Spanish' },
+  { code: 'fr', label: 'French' },
+  { code: 'de', label: 'German' },
+  { code: 'pt', label: 'Portuguese' },
+  { code: 'it', label: 'Italian' },
+  { code: 'nl', label: 'Dutch' },
+  { code: 'hi', label: 'Hindi' },
+  { code: 'ar', label: 'Arabic' },
+  { code: 'zh', label: 'Chinese' },
+  { code: 'ja', label: 'Japanese' },
+  { code: 'ko', label: 'Korean' },
+]
 
 function FieldError({ message }: { message: string }) {
   return (

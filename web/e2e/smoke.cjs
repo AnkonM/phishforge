@@ -28,7 +28,7 @@ async function main() {
       if (msg.type() === 'error') consoleErrors.push(msg.text())
     })
     await page.goto(BASE + '/')
-    await page.waitForSelector('text=Studio')
+    await page.waitForSelector('h1:has-text("Studio")')
 
     // Fill minimal required fields
     await page.fill('textarea', 'Playwright smoke-test org, 200 employees.')

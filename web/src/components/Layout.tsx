@@ -1,6 +1,7 @@
-import { BarChart3, Beaker, Settings as SettingsIcon, Workflow } from 'lucide-react'
+import { BarChart3, Beaker, ChevronsLeft, ChevronsRight, Settings as SettingsIcon, Workflow } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSidebar } from '../hooks/useSidebar'
 import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
@@ -11,6 +12,8 @@ const NAV = [
 ]
 
 export function Layout({ children }: { children: ReactNode }) {
+  const [collapsed, setCollapsed] = useSidebar()
+
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
       <a
@@ -20,13 +23,33 @@ export function Layout({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <nav
-        className="flex shrink-0 flex-row items-center gap-4 border-b px-4 py-3 lg:w-56 lg:flex-col lg:items-stretch lg:gap-1 lg:border-b-0 lg:border-r lg:px-3 lg:py-5"
+        className={`flex shrink-0 flex-row items-center gap-4 border-b px-4 py-3 lg:flex-col lg:items-stretch lg:gap-1 lg:border-b-0 lg:border-r lg:py-5 lg:transition-[width] lg:duration-200 motion-reduce:lg:transition-none ${
+          collapsed ? 'lg:w-16 lg:px-2' : 'lg:w-56 lg:px-3'
+        }`}
         style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
         aria-label="Primary"
       >
-        <p className="hidden px-2 pb-4 text-sm font-semibold lg:block" style={{ color: 'var(--color-ink)' }}>
-          PhishForge Console
-        </p>
+        <div
+          className="mb-4 hidden items-center lg:flex"
+          style={collapsed ? { justifyContent: 'center' } : { justifyContent: 'space-between' }}
+        >
+          {!collapsed && (
+            <p className="truncate px-2 text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
+              PhishForge Console
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={() => setCollapsed(!collapsed)}
+            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[var(--radius-sm)] hover:bg-[var(--color-page)]"
+            style={{ color: 'var(--color-ink-muted)' }}
+          >
+            {collapsed ? <ChevronsRight size={15} aria-hidden /> : <ChevronsLeft size={15} aria-hidden />}
+          </button>
+        </div>
+
         <div className="flex flex-1 flex-row gap-1 lg:flex-col">
           {NAV.map((item) => {
             const Icon = item.icon
@@ -35,10 +58,11 @@ export function Layout({ children }: { children: ReactNode }) {
                 key={item.to}
                 to={item.to}
                 end={item.to === '/'}
+                title={collapsed ? item.label : undefined}
                 className={({ isActive }) =>
                   `flex items-center gap-2 rounded-[var(--radius-md)] px-2.5 py-2 text-sm font-medium transition-colors ${
                     isActive ? '' : 'hover:bg-[var(--color-page)]'
-                  }`
+                  } ${collapsed ? 'lg:justify-center' : ''}`
                 }
                 style={({ isActive }) =>
                   isActive
@@ -47,12 +71,12 @@ export function Layout({ children }: { children: ReactNode }) {
                 }
               >
                 <Icon size={16} aria-hidden />
-                <span className="hidden sm:inline">{item.label}</span>
+                <span className={collapsed ? 'sm:inline lg:hidden' : 'hidden sm:inline'}>{item.label}</span>
               </NavLink>
             )
           })}
         </div>
-        <div className="hidden lg:block">
+        <div className={`hidden lg:flex ${collapsed ? 'justify-center' : ''}`}>
           <ThemeToggle />
         </div>
       </nav>

@@ -1,0 +1,21 @@
+{
+  "scenario_id": "bench-10-exec-wire-d4",
+  "organization_context": "Global investment bank. Strict policy: any cross-border wire transfer exceeding $100k requires dual physical token approval and verbal verification with Treasury.",
+  "target_role": "executive",
+  "scenario_type": "invoice_fraud",
+  "difficulty": 4,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "unusual_request",
+    "suspicious_link"
+  ],
+  "prohibited_elements": [
+    "generic greetings",
+    "obvious spelling errors"
+  ],
+  "simulation_constraints": {
+    "require_subtle_pretext": "True"
+  }
+}

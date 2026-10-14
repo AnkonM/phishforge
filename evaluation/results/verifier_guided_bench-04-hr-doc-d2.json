@@ -1,0 +1,82 @@
+{
+  "run_id": "b117372c-83ae-4d49-af8f-5ea04f9f019d",
+  "scenario": {
+    "scenario_id": "bench-04-hr-doc-d2",
+    "organization_context": "Healthcare staffing agency, 300 staff. HR coordinates quarterly payroll compliance verifications via BambooHR.",
+    "target_role": "hr",
+    "scenario_type": "hr_document_request",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "authority_impersonation",
+      "suspicious_link",
+      "urgency"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "2352be72-1347-4950-9d11-0bd05a0c0b9b",
+        "scenario_id": "bench-04-hr-doc-d2",
+        "subject": "Action Required: Quarterly Payroll Compliance Verification - Q3",
+        "sender": "Director of Human Resources <hr-compliance@bamboohr-services.example-corp-sim.local>",
+        "body": "Dear HR Team,\n\nAs part of our standard quarterly review cycle, all HR personnel are required to complete the Q3 payroll compliance and direct deposit verification through our internal portal.\n\nFailure to complete this verification by close of business tomorrow will result in temporary suspension of payroll processing permissions for your account.\n\nPlease access the portal immediately to confirm the updated compliance checklist:\n\n[SIMULATED LINK: Access BambooHR Compliance Portal]\n\nThank you for your prompt attention to this matter.\n\nRegards,\n\nDirector of People Operations\nAegis Healthcare Staffing",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 2 is achieved through a suspicious sender domain combined with artificial urgency regarding payroll permissions.",
+          "tone": "formal",
+          "scenario_notes": "Uses a fictional internal system name and enforces safety constraints via the required link placeholder."
+        },
+        "intended_indicators": [
+          "authority_impersonation",
+          "suspicious_link",
+          "urgency"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:35.964966Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "63c68a14-6a9c-4f1c-a523-5467f8d00d07",
+        "generation_id": "2352be72-1347-4950-9d11-0bd05a0c0b9b",
+        "realism_score": 85.0,
+        "relevance_score": 90.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain uses an explicitly simulation-marked suffix ('example-corp-sim.local'), which is suitable for training environments but might lower realism for advanced phishing detection if exposed.",
+          "The sign-off uses 'Director of People Operations' while the sender display name says 'Director of Human Resources', creating a slight title inconsistency."
+        ],
+        "overall_score": 92.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 92.8,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The sender domain uses an explicitly simulation-marked suffix ('example-corp-sim.local'), which is suitable for training environments but might lower realism for advanced phishing detection if exposed.",
+          "The sign-off uses 'Director of People Operations' while the sender display name says 'Director of Human Resources', creating a slight title inconsistency."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The sender domain uses an explicitly simulation-marked suffix ('example-corp-sim.local'), which is suitable for training environments but might lower realism for advanced phishing detection if exposed.\n2. The sign-off uses 'Director of People Operations' while the sender display name says 'Director of Human Resources', creating a slight title inconsistency.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 92.8,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:44:33.546991Z"
+}

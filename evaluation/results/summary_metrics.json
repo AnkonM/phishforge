@@ -1,0 +1,33 @@
+{
+  "verifier_guided": {
+    "total_runs": 12,
+    "mean_overall_score": 93.9,
+    "pass_rate_pct": 83.3,
+    "safety_pass_rate_pct": 83.3,
+    "mean_realism": 87.5,
+    "mean_role_relevance": 92.3,
+    "mean_indicator_coverage": 100.0,
+    "mean_difficulty_match": 94.7,
+    "mean_language_quality": 100.0,
+    "mean_iterations": 1.1,
+    "terminal_state_distribution": {
+      "PASS": 10,
+      "REJECTED_UNSAFE": 2
+    }
+  },
+  "baseline_direct": {
+    "total_runs": 12,
+    "mean_overall_score": 93.5,
+    "pass_rate_pct": 100.0,
+    "safety_pass_rate_pct": 75.0,
+    "mean_realism": 88.5,
+    "mean_role_relevance": 90.8,
+    "mean_indicator_coverage": 100.0,
+    "mean_difficulty_match": 93.5,
+    "mean_language_quality": 100.0,
+    "mean_iterations": 1.0,
+    "terminal_state_distribution": {
+      "GENERATED_UNVERIFIED": 12
+    }
+  }
+}

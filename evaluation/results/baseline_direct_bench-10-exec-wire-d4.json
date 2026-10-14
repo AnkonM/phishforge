@@ -1,0 +1,77 @@
+{
+  "run_id": "e7619182-f2c5-4612-bd01-db76eadc259f",
+  "scenario": {
+    "scenario_id": "bench-10-exec-wire-d4",
+    "organization_context": "Global investment bank. Strict policy: any cross-border wire transfer exceeding $100k requires dual physical token approval and verbal verification with Treasury.",
+    "target_role": "executive",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 4,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "unusual_request",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [
+      "generic greetings",
+      "obvious spelling errors"
+    ],
+    "simulation_constraints": {
+      "require_subtle_pretext": "True"
+    }
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "27d6e951-39f3-416e-8d08-f9c523f53367",
+        "scenario_id": "bench-10-exec-wire-d4",
+        "subject": "Time-sensitive settlement for Apex Logistics Q3 cross-border restructuring",
+        "sender": "Jonathan Vance <jonathan.vance@apex-logistics-sim.local>",
+        "body": "Dear Elizabeth,\n\nFollowing our executive alignment call yesterday regarding the regional restructuring, Apex Logistics has finalized the Q3 vendor settlement processing schedule.\n\nTo ensure our regional accounts remain in good standing ahead of the upcoming quarter-end audit, we require the final cross-border wire transfer of $125,000 to be initiated today. Due to the correspondent banking cut-off times for this specific corridor, standard routing must be bypassed in favor of our expedited intermediary account.\n\nPlease access the secure payment routing portal below to review the updated intermediary instructions and authorize the transfer prior to 16:00 UTC:\n\n[SIMULATED LINK: Access Apex Logistics Secure Vendor Portal]\n\nThank you for your continued partnership on this strategic initiative.\n\nBest regards,\n\nJonathan Vance\nManaging Director, Corporate Development\nApex Logistics Partners",
+        "metadata": {
+          "difficulty_rationale": "Level 4 sophistication is achieved by using appropriate executive-level financial terminology, a plausible business pretext, and authority without overt pressure, relying entirely on a subtle domain variation and a bypass of standard dual-control policy to signal the simulation.",
+          "tone": "formal",
+          "scenario_notes": "Designed to test adherence to cross-border wire transfer policies exceeding $100k under subtle executive pressure."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "unusual_request",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:29.114050Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "4feab144-c1f0-4885-95fe-36f1ac67a177",
+        "generation_id": "27d6e951-39f3-416e-8d08-f9c523f53367",
+        "realism_score": 92.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain suffix uses 'sim.local' which provides an obvious sandbox tell that a vigilant reader inspecting the headers will immediately notice."
+        ],
+        "overall_score": 95.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.8,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:46:26.303656Z"
+}

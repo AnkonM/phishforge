@@ -1,0 +1,64 @@
+{
+  "run_id": "f2aade3b-256c-4d3f-8ce3-07da61ee256f",
+  "scenario": {
+    "scenario_id": "bench-07-it-verify-d3",
+    "organization_context": "Financial technology firm, 450 engineers. IT administrators manage production AWS clusters with mandatory Duo MFA token rotation.",
+    "target_role": "it",
+    "scenario_type": "account_verification",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "a1717c66-c72c-419e-9928-80ff797c96e1",
+        "scenario_id": "bench-07-it-verify-d3",
+        "subject": "Action Required: Mandatory Duo MFA Certificate Renewal for Production AWS Access",
+        "sender": "Cloud Infrastructure Identity Team <identity-ops@internal-aws-auth.sim-training.test>",
+        "body": "Hi IT Team,\n\nAs part of our routine quarterly security hardening for our financial infrastructure, all administrators managing production AWS clusters are required to re-verify and sync their Duo MFA security tokens.\n\nRecent compliance audits indicate that your account requires manual token re-attestation to prevent temporary access suspension during the upcoming maintenance window.\n\nPlease complete the verification process within the next 48 hours to maintain uninterrupted access to the production environment:\n\n[SIMULATED LINK: Access Duo MFA Token Sync Portal at https://auth-verify.sim-training.test/duo-sync]\n\nIf you have any questions regarding this security procedure, please reach out via internal Slack.\n\nRegards,\n\nCloud Infrastructure Identity Team\nApex Financial Tech Engineering",
+        "metadata": {
+          "difficulty_rationale": "At level 3, the email uses plausible technical terminology regarding AWS and Duo MFA token rotation, making it look legitimate at a quick glance, but relies on a slightly off internal subdomain and a 48-hour timeline.",
+          "tone": "formal",
+          "scenario_notes": "Tailored specifically for internal IT staff managing infrastructure, leveraging realistic administrative workflows."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:40.355498Z"
+      },
+      "safety_result": {
+        "passed": false,
+        "status": "FAIL",
+        "findings": [
+          "Real brand impersonation in sender field: 'aws'"
+        ]
+      },
+      "verification": null,
+      "score": null,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [],
+        "revision_instructions": "Generation or safety check failed; no revision instructions available.",
+        "new_score": null,
+        "score_delta": null,
+        "termination_reason": "SAFETY_FAIL"
+      }
+    }
+  ],
+  "terminal_state": "REJECTED_UNSAFE",
+  "created_at": "2026-08-28T19:45:37.977978Z"
+}

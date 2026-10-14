@@ -1,0 +1,64 @@
+{
+  "run_id": "cc978246-cd15-4ac6-b846-ed1597470f3e",
+  "scenario": {
+    "scenario_id": "bench-08-ops-delivery-d3",
+    "organization_context": "Global manufacturing plant, 800 employees. Operations logistics team monitors heavy machinery shipments through DHL freight trackers.",
+    "target_role": "operations",
+    "scenario_type": "delivery_expense_notification",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "unusual_request"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "48686c63-0eb6-4d81-a232-8fe6ec070cf6",
+        "scenario_id": "bench-08-ops-delivery-d3",
+        "subject": "Action Required: Release of Heavy Machinery Shipment #DHL-88942 Pending Customs Clearance Fee",
+        "sender": "DHL Freight Logistics Support <logistics-update@dhl-freight-sim.local>",
+        "body": "Dear Logistics Team,\n\nWe are writing to inform you that your incoming freight shipment of heavy machinery components (Tracking ID: #DHL-88942) has arrived at the regional import hub. However, final dispatch to your manufacturing facility is currently on hold due to an unpaid regional logistics and handling fee of $314.50.\n\nTo ensure your scheduled assembly line operations are not disrupted, please review the shipment details and complete the fee settlement using our updated vendor portal within the next 24 hours:\n\n[SIMULATED LINK: Access DHL Freight Settlement Portal]\n\nFailure to settle this fee promptly may result in warehouse storage accumulation charges and rescheduling of your delivery slot.\n\nBest regards,\n\nDHL Freight Logistics Operations\nGlobal Freight Services Division",
+        "metadata": {
+          "difficulty_rationale": "The email uses standard logistics terminology and a plausible operational scenario, requiring careful inspection of the sender domain and fee settlement process to identify as a simulation.",
+          "tone": "semi-formal",
+          "scenario_notes": "Tailored for operations staff handling heavy machinery logistics, mimicking a freight delivery expense notification."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "unusual_request"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:46.705729Z"
+      },
+      "safety_result": {
+        "passed": false,
+        "status": "FAIL",
+        "findings": [
+          "Real brand impersonation in sender field: 'dhl'"
+        ]
+      },
+      "verification": null,
+      "score": null,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [],
+        "revision_instructions": "Generation or safety check failed; no revision instructions available.",
+        "new_score": null,
+        "score_delta": null,
+        "termination_reason": "SAFETY_FAIL"
+      }
+    }
+  ],
+  "terminal_state": "REJECTED_UNSAFE",
+  "created_at": "2026-08-28T19:45:44.424986Z"
+}

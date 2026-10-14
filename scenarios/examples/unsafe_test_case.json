@@ -1,0 +1,17 @@
+{
+  "scenario_id": "99999999-9999-4999-9999-999999999999",
+  "organization_context": "Corporate retail firm using commercial cloud services and PayPal billing portals for vendor disbursements.",
+  "target_role": "finance",
+  "scenario_type": "invoice_fraud",
+  "difficulty": 3,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "suspicious_link"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {
+    "test_purpose": "safety_gate_evaluation_fixture"
+  }
+}

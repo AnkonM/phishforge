@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-06-finance-invoice-d3",
+  "organization_context": "Mid-size UK professional services firm, ~350 employees. Finance team uses SAP for AP processing. Invoices above £10,000 require dual approval.",
+  "target_role": "finance",
+  "scenario_type": "invoice_fraud",
+  "difficulty": 3,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "suspicious_link"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

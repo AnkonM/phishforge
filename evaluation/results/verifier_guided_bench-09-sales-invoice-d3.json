@@ -1,0 +1,82 @@
+{
+  "run_id": "60767451-a9d6-4543-aff4-53bcaecf1d5d",
+  "scenario": {
+    "scenario_id": "bench-09-sales-invoice-d3",
+    "organization_context": "Enterprise cloud consultancy, 250 employees. Sales account directors finalize client contracts with custom milestone billing schedules.",
+    "target_role": "sales",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "d2465228-8821-4b75-a7b8-623a675973a3",
+        "scenario_id": "bench-09-sales-invoice-d3",
+        "subject": "Action Required: Updated Milestone Billing Authorization for Apex Cloud Project",
+        "sender": "Director of Finance <finance-approvals@cloud-apex-sim.local>",
+        "body": "Hi team,\n\nWe are finalizing the Q3 milestone billing schedules for the upcoming client deployments. Following our leadership review, all custom milestone invoices must now be routed through our newly integrated portal before final release to clients.\n\nPlease review the updated billing structure and confirm your assigned client accounts via the secure portal link below by end of day tomorrow to avoid any processing delays.\n\n[SIMULATED LINK: Access Billing Portal -> https://portal-auth.cloud-apex-sim.local/login]\n\nRegards,\n\nFinance Operations\nCloudSync Solutions",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 3 is achieved by using highly plausible workflow language relevant to sales account directors, with the primary tells being a slightly modified internal domain structure and an external-looking portal authentication link.",
+          "tone": "semi-formal",
+          "scenario_notes": "Tailored specifically for enterprise cloud consultancy sales teams dealing with milestone billing."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:09.249474Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "bc1292ca-ae1f-4a2e-bb29-dc22ab3a8ac5",
+        "generation_id": "d2465228-8821-4b75-a7b8-623a675973a3",
+        "realism_score": 88.0,
+        "relevance_score": 92.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender address uses a simulation-specific domain suffix (.cloud-apex-sim.local) which is slightly too transparent for a high-end Level 3 phishing test.",
+          "The sign-off references 'CloudSync Solutions' while the sender display name and domain use 'Apex Cloud', introducing a minor organizational identity discrepancy."
+        ],
+        "overall_score": 94.0,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 94.0,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The sender address uses a simulation-specific domain suffix (.cloud-apex-sim.local) which is slightly too transparent for a high-end Level 3 phishing test.",
+          "The sign-off references 'CloudSync Solutions' while the sender display name and domain use 'Apex Cloud', introducing a minor organizational identity discrepancy."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The sender address uses a simulation-specific domain suffix (.cloud-apex-sim.local) which is slightly too transparent for a high-end Level 3 phishing test.\n2. The sign-off references 'CloudSync Solutions' while the sender display name and domain use 'Apex Cloud', introducing a minor organizational identity discrepancy.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 94.0,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:45:55.494981Z"
+}

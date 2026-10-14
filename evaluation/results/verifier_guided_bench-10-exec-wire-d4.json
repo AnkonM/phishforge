@@ -1,0 +1,87 @@
+{
+  "run_id": "38ace8bb-490f-4b47-b33b-1ded0b8103b6",
+  "scenario": {
+    "scenario_id": "bench-10-exec-wire-d4",
+    "organization_context": "Global investment bank. Strict policy: any cross-border wire transfer exceeding $100k requires dual physical token approval and verbal verification with Treasury.",
+    "target_role": "executive",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 4,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "unusual_request",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [
+      "generic greetings",
+      "obvious spelling errors"
+    ],
+    "simulation_constraints": {
+      "require_subtle_pretext": "True"
+    }
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "1845a3a3-25ae-4988-9c5d-51303c7a6793",
+        "scenario_id": "bench-10-exec-wire-d4",
+        "subject": "Time-sensitive settlement for Apex Logistics cross-border transaction",
+        "sender": "Arthur Vance <a.vance@vanguard-holdings.example-corp-sim.local>",
+        "body": "Dear Jonathan,\n\nI am currently reviewing the quarter-end closing schedules for our international counterparties and noticed the pending settlement for Apex Logistics remains unexecuted. As discussed during the strategy retreat, we need to ensure this cross-border transfer clears before the regional banking cutoff today to avoid compounding delays on the acquisition ledger.\n\nGiven the $125,000 value, I have already coordinated with regional compliance to expedite the preliminary sign-offs. Please access the secure portal below to review the transaction details and confirm the final release under your executive mandate:\n\n[SIMULATED LINK: Secure Portal Transaction Review]\n\nLet me know once this has been processed so I can update the steering committee.\n\nBest regards,\n\nArthur Vance\nManaging Director, Global Operations\nVanguard Holdings",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 4 is achieved by using executive-level terminology and mimicking standard internal approval workflows, relying on a subtle domain variation and bypassing standard dual-token protocol via authoritative pretext.",
+          "tone": "formal",
+          "scenario_notes": "Designed for executive security awareness training to highlight risks of bypass attempts on standard wire transfer controls."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "unusual_request",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:24.120540Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "7e5f7454-e640-440f-a9d2-8e6544591e53",
+        "generation_id": "1845a3a3-25ae-4988-9c5d-51303c7a6793",
+        "realism_score": 92.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 90.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain suffix 'example-corp-sim.local' is explicitly simulated, which may make the domain tell slightly too visible for fully immersive Level 4 testing if inspected closely by an executive."
+        ],
+        "overall_score": 94.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 94.8,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The sender domain suffix 'example-corp-sim.local' is explicitly simulated, which may make the domain tell slightly too visible for fully immersive Level 4 testing if inspected closely by an executive."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The sender domain suffix 'example-corp-sim.local' is explicitly simulated, which may make the domain tell slightly too visible for fully immersive Level 4 testing if inspected closely by an executive.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 94.8,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:46:18.103107Z"
+}

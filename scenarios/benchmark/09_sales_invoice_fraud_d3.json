@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-09-sales-invoice-d3",
+  "organization_context": "Enterprise cloud consultancy, 250 employees. Sales account directors finalize client contracts with custom milestone billing schedules.",
+  "target_role": "sales",
+  "scenario_type": "invoice_fraud",
+  "difficulty": 3,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "suspicious_link"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

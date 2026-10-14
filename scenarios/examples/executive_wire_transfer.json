@@ -1,0 +1,9 @@
+{
+  "organization_context": "Tech startup in Singapore, Series B stage, ~80 employees. CFO handles wire transfers directly. CEO is frequently travelling.",
+  "target_role": "executive",
+  "scenario_type": "account_verification",
+  "difficulty": 4,
+  "desired_indicators": ["authority_impersonation", "urgency", "unusual_request"],
+  "prohibited_elements": ["real company names", "real banking domains"],
+  "simulation_constraints": {}
+}

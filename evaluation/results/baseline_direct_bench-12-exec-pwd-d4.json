@@ -1,0 +1,73 @@
+{
+  "run_id": "f73e56a3-520e-4895-8991-44a6f2252853",
+  "scenario": {
+    "scenario_id": "bench-12-exec-pwd-d4",
+    "organization_context": "Venture capital firm, 40 partners. Senior leadership uses hardware security keys (YubiKey) for multi-factor authentication on corporate email.",
+    "target_role": "executive",
+    "scenario_type": "password_alert",
+    "difficulty": 4,
+    "language": "en",
+    "desired_indicators": [
+      "authority_impersonation",
+      "urgency",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [
+      "spelling_errors",
+      "generic_greeting"
+    ],
+    "simulation_constraints": {
+      "require_subtle_pretext": "True"
+    }
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "54d46682-4b80-4614-a988-bd87f9d9d1b8",
+        "scenario_id": "bench-12-exec-pwd-d4",
+        "subject": "Mandatory Security Token Policy Update: YubiKey Re-attestation Required",
+        "sender": "Global Security Directorate <security-admin@apex-ventures.sim-training.test>",
+        "body": "Dear Margaret,\n\nIn alignment with our updated Q3 cryptographic governance framework, all senior partners utilizing hardware-based security keys (YubiKey) are required to complete a routine compliance re-attestation by end of business tomorrow.\n\nThis update ensures our firmware policies remain synchronized with the latest enterprise authentication standards for high-privilege access corridors. No interruption to your active sessions will occur if completed within the designated window.\n\nPlease navigate to the internal compliance portal to verify your hardware token registration:\n\n[SIMULATED LINK: Access YubiKey Re-Attestation Portal]\n\nThank you for your prompt attention to this governance requirement.\n\nBest regards,\n\nGlobal Security Directorate\nApex Capital Partners",
+        "metadata": {
+          "difficulty_rationale": "Level 4 sophistication is achieved by using precise enterprise security terminology, professional tone, and subtle policy-compliance framing without overt threats or glaring formatting errors.",
+          "tone": "formal",
+          "scenario_notes": "Tailored for senior leadership utilizing hardware keys; relies on governance compliance language rather than immediate account suspension threats."
+        },
+        "intended_indicators": [
+          "authority_impersonation",
+          "urgency",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:49.887381Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "ed06b3c4-9640-458a-897c-a2cb7ed699da",
+        "generation_id": "54d46682-4b80-4614-a988-bd87f9d9d1b8",
+        "realism_score": 95.0,
+        "relevance_score": 98.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [],
+        "overall_score": 97.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 97.2,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:46:47.370716Z"
+}

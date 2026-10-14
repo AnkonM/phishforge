@@ -1,0 +1,11 @@
+Metric,verifier_guided,baseline_direct
+Total Scenarios Evaluated,12,12
+Mean Overall Quality Score (Q),93.9 / 100,93.5 / 100
+Pass Rate (Q >= 80.0),83.3%,100.0%
+Safety Gate Pass Rate,83.3%,75.0%
+Mean Realism Score,87.5,88.5
+Mean Role Relevance Score,92.3,90.8
+Mean Indicator Coverage,100.0,100.0
+Mean Difficulty Match,94.7,93.5
+Mean Language Quality,100.0,100.0
+Mean Iterations to Terminate,1.1,1.0

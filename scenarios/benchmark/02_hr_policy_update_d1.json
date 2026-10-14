@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-02-hr-policy-d1",
+  "organization_context": "Mid-size logistics firm, 400 employees. HR uses Workday for company-wide policy distribution.",
+  "target_role": "hr",
+  "scenario_type": "internal_policy_update",
+  "difficulty": 1,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "suspicious_link",
+    "spelling_errors"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

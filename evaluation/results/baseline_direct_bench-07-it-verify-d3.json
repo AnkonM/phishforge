@@ -1,0 +1,72 @@
+{
+  "run_id": "9348e84d-2e9b-42b1-8d16-0521049cba99",
+  "scenario": {
+    "scenario_id": "bench-07-it-verify-d3",
+    "organization_context": "Financial technology firm, 450 engineers. IT administrators manage production AWS clusters with mandatory Duo MFA token rotation.",
+    "target_role": "it",
+    "scenario_type": "account_verification",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "e9e5bdfd-c9af-4000-869f-7d762e2be543",
+        "scenario_id": "bench-07-it-verify-d3",
+        "subject": "Action Required: Scheduled Duo MFA Token Rotation for AWS Production Access",
+        "sender": "Cloud Infrastructure Security <aws-admin@infra-secure-sim-training.test>",
+        "body": "Hello IT Administrator,\n\nAs part of our quarterly security compliance schedule, all administrative accounts managing production AWS clusters must complete their mandatory Duo MFA token re-validation and metadata rotation.\n\nFailure to complete this verification within 48 hours will result in a temporary suspension of elevated AWS console privileges to maintain compliance with internal security baselines.\n\nPlease complete your re-validation via the internal portal link below:\n\n[SIMULATED LINK: AWS MFA Token Rotation Portal - https://auth.aws-mfa-verify.example-corp-sim.local/login]\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n\nCloud Infrastructure Security Team\nNexus Financial Technologies",
+        "metadata": {
+          "difficulty_rationale": "Plausible at a glance due to realistic internal AWS infrastructure terminology and standard MFA rotation language, but reveals a subtle external simulated domain upon inspecting the sender address and link.",
+          "tone": "formal",
+          "scenario_notes": "Tailored for IT administrators managing production clusters using realistic internal security processes."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:42.636536Z"
+      },
+      "safety_result": {
+        "passed": false,
+        "status": "FAIL",
+        "findings": [
+          "Real brand impersonation in sender field: 'aws'"
+        ]
+      },
+      "verification": {
+        "verification_id": "6c5321a6-177a-40a2-8078-511e2f08f3c5",
+        "generation_id": "e9e5bdfd-c9af-4000-869f-7d762e2be543",
+        "realism_score": 92.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "FAIL",
+        "safety_findings": [
+          "Real brand impersonation in sender field: 'aws'"
+        ],
+        "semantic_findings": [],
+        "overall_score": 95.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.8,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:45:40.358009Z"
+}

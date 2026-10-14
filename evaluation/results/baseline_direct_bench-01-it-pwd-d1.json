@@ -1,0 +1,71 @@
+{
+  "run_id": "dfc6ff68-faf7-4ee2-87e2-24b489a7babf",
+  "scenario": {
+    "scenario_id": "bench-01-it-pwd-d1",
+    "organization_context": "Global tech consulting firm, 1200 employees. IT department uses Okta for SSO.",
+    "target_role": "it",
+    "scenario_type": "password_alert",
+    "difficulty": 1,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "generic_greeting"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "3c93e401-d7fe-42cd-bee3-402de7191e5c",
+        "scenario_id": "bench-01-it-pwd-d1",
+        "subject": "URGENT: Your password expires today! Update Now",
+        "sender": "Admin Support <support@admin-update-sim-training.test>",
+        "body": "Dear User,\n\nYour network password is going to expire in 2 hours. If you do not update your password right now, your account will be locked and you will lose access to all IT systems!\n\nPlease click here immediately to reset your password:\n[SIMULATED LINK: Reset Password Portal]\n\nThank you,\nIT Help Desk",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 1 is achieved through multiple glaring red flags including extreme urgency, a generic greeting, and an implausible sender address.",
+          "tone": "formal",
+          "scenario_notes": "Designed for basic awareness training targeting IT staff with obvious anomalies."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "generic_greeting"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:13.283172Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "31370762-3540-4bac-934d-85decb9e06d0",
+        "generation_id": "3c93e401-d7fe-42cd-bee3-402de7191e5c",
+        "realism_score": 75.0,
+        "relevance_score": 60.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The target role is IT, yet the email uses a generic 'Dear User' greeting and basic IT help desk language instead of referencing specific internal IT support channels or Okta SSO terminology mentioned in the organization context.",
+          "The sender domain 'admin-update-sim-training.test' is overly transparent for a simulation targeting IT professionals, who would immediately recognize the domain naming convention as synthetic."
+        ],
+        "overall_score": 82.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 82.8,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:44:11.143970Z"
+}

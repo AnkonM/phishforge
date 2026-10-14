@@ -1,0 +1,20 @@
+{
+  "generation_id": "541cc95f-4223-41e1-a9cf-2f97895b0c8e",
+  "scenario_id": "834f2906-b711-4aa6-952e-67ebde4dd152",
+  "subject": "URGENT: Outstanding Vendor Payment Approval - Ref #INV-88342",
+  "sender": "Arthur Vance <a.vance@vanguard-holdings.example-corp-sim.local>",
+  "body": "Dear Finance Team,\n\nI am currently reviewing the month-end accounts payable ledger and noticed that the priority invoice #INV-88342 for Apex Logistics (\u00a314,500.00) is still pending dual authorization in the system.\n\nAs this requires immediate sign-off to avoid late processing penalties ahead of the quarterly audit, please review and expedite the secondary approval via the internal portal below as soon as possible:\n\n[SIMULATED LINK: Internal AP Portal Invoice Review]\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n\nArthur Vance\nChief Financial Officer\nVanguard Financial Services Ltd",
+  "metadata": {
+    "difficulty_rationale": "At level 3, the email uses plausible executive terminology, appropriate business context regarding dual approval, and a professional tone, but features a slightly misaligned sender domain and a pressurized workflow demand that require scrutiny to identify.",
+    "tone": "formal",
+    "scenario_notes": "Tailored for finance department SAP/AP processing context using fictional organizational names and safe placeholder links."
+  },
+  "intended_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "suspicious_link"
+  ],
+  "model": "models/gemini-3.5-flash-lite",
+  "prompt_version": "v1",
+  "timestamp": "2026-08-30T17:03:51.522954Z"
+}

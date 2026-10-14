@@ -1,0 +1,82 @@
+{
+  "run_id": "11c23831-5bea-4bd6-8d73-78eac975fdf9",
+  "scenario": {
+    "scenario_id": "bench-03-sales-delivery-d2",
+    "organization_context": "B2B SaaS company, 150 employees. Sales reps regularly receive shipment and client gift delivery notices.",
+    "target_role": "sales",
+    "scenario_type": "delivery_expense_notification",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "unusual_request"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "f83f70fd-4464-4bef-b327-45eb9f8e0f7c",
+        "scenario_id": "bench-03-sales-delivery-d2",
+        "subject": "Action Required: Outstanding Delivery Fee for Client Appreciation Hamper",
+        "sender": "Express Courier Services <support@courier-services-sim.local>",
+        "body": "Dear Sales Representative,\n\nWe attempted to deliver a high-priority client appreciation hamper to your office address on behalf of your account portfolio, but the delivery could not be completed due to an unpaid regional handling charge of $4.50.\n\nTo ensure your gift reaches your client without further delay, please settle the outstanding delivery fee immediately using our secure portal below:\n\n[SIMULATED LINK: http://courier-services-sim.local/pay-fee?id=99281]\n\nPlease note that shipments are held for a maximum of 24 hours before being returned to the sender. Your prompt attention to this matter is greatly appreciated.\n\nBest regards,\nCustomer Support Team\nExpress Courier Services",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 2 is achieved through a plausible scenario tailored for sales reps receiving client gifts, paired with an unusual request for a small fee via a fictional domain.",
+          "tone": "semi-formal",
+          "scenario_notes": "None"
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "unusual_request"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:26.930008Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "1cb9119c-526e-4090-8de5-6200aec39896",
+        "generation_id": "f83f70fd-4464-4bef-b327-45eb9f8e0f7c",
+        "realism_score": 85.0,
+        "relevance_score": 90.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain 'courier-services-sim.local' explicitly signals a simulation environment rather than mimicking a real courier service.",
+          "The request to pay an arbitrary $4.50 handling fee via an external link is a straightforward and easily identifiable indicator for a Level 2 difficulty target."
+        ],
+        "overall_score": 92.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 92.8,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The sender domain 'courier-services-sim.local' explicitly signals a simulation environment rather than mimicking a real courier service.",
+          "The request to pay an arbitrary $4.50 handling fee via an external link is a straightforward and easily identifiable indicator for a Level 2 difficulty target."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The sender domain 'courier-services-sim.local' explicitly signals a simulation environment rather than mimicking a real courier service.\n2. The request to pay an arbitrary $4.50 handling fee via an external link is a straightforward and easily identifiable indicator for a Level 2 difficulty target.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 92.8,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:44:24.520537Z"
+}

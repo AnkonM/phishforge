@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Secrets
+.env
+
+# Node / web
+web/node_modules/
+web/dist/
+web/.vite/
+
+# Runs (generated at runtime) - keep a small sample set only
+runs/*.json
+!runs/.gitkeep
+
+# OS
+.DS_Store

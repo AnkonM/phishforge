@@ -1,0 +1,80 @@
+{
+  "run_id": "a27f884c-e2ff-4d49-9ace-b0a08c0bc0bb",
+  "scenario": {
+    "scenario_id": "bench-06-finance-invoice-d3",
+    "organization_context": "Mid-size UK professional services firm, ~350 employees. Finance team uses SAP for AP processing. Invoices above £10,000 require dual approval.",
+    "target_role": "finance",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "290ea406-45d8-4ee6-af53-92b59b539e0b",
+        "scenario_id": "bench-06-finance-invoice-d3",
+        "subject": "Urgently Required: Dual Approval for Pending Vendor Settlement - INV-84920",
+        "sender": "Arthur Pendelton <arthur.pendelton@apex-finance-sim.local>",
+        "body": "Hi Finance Team,\n\nI am currently traveling between client sites and have limited access to the main ERP portal. We have an urgent settlement due today for Apex Procurement Ltd (INV-84920) totalling £14,500.00.\n\nSince this exceeds the single-signoff limit, I have initiated the preliminary review on my end. Could one of you please complete the secondary approval via the secure AP portal link below so the payment run is not delayed?\n\n[SIMULATED LINK: Secure AP Portal Approval - ap.example-corp-sim.local/auth/invoice/84920]\n\nLet me know once processed.\n\nRegards,\n\nArthur Pendelton\nDirector of Finance\nApex Professional Services Ltd",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 3 is achieved by using a plausible internal finance workflow context and professional tone, with indicators limited to a slightly unconventional approval request via a non-standard domain.",
+          "tone": "formal",
+          "scenario_notes": "Tailored for finance staff utilizing AP processes, leveraging authority bias and urgency around dual-approval limits."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:26.128251Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "d86c6a42-a28a-4a91-910f-a97b9a29f2ec",
+        "generation_id": "290ea406-45d8-4ee6-af53-92b59b539e0b",
+        "realism_score": 90.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The link domain 'example-corp-sim.local' is transparently simulated and could be slightly more deceptive to better fit a high-end Level 3 or 4 scenario."
+        ],
+        "overall_score": 95.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.2,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The link domain 'example-corp-sim.local' is transparently simulated and could be slightly more deceptive to better fit a high-end Level 3 or 4 scenario."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The link domain 'example-corp-sim.local' is transparently simulated and could be slightly more deceptive to better fit a high-end Level 3 or 4 scenario.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 95.2,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:45:23.596306Z"
+}

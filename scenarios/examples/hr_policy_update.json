@@ -1,0 +1,9 @@
+{
+  "organization_context": "Large US retail company, ~2000 employees. HR uses Workday for employee self-service. Annual policy acknowledgement is required each January.",
+  "target_role": "hr",
+  "scenario_type": "internal_policy_update",
+  "difficulty": 2,
+  "desired_indicators": ["urgency", "credential_harvesting_pretext"],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

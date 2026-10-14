@@ -1,0 +1,76 @@
+{
+  "run_id": "3bc67bc3-a048-4ffd-94e5-cbc57bb1e1e2",
+  "scenario": {
+    "scenario_id": "bench-11-finance-policy-d4",
+    "organization_context": "Multinational audit corporation, 5000 employees. Finance department operates under strict SOX compliance guidelines with annual mandatory policy re-attestation.",
+    "target_role": "finance",
+    "scenario_type": "internal_policy_update",
+    "difficulty": 4,
+    "language": "en",
+    "desired_indicators": [
+      "authority_impersonation",
+      "suspicious_link",
+      "urgency"
+    ],
+    "prohibited_elements": [
+      "spelling_errors",
+      "generic_greeting"
+    ],
+    "simulation_constraints": {
+      "require_subtle_pretext": "True"
+    }
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "7ca65ba7-10de-4c5b-adea-c8468bb7b49d",
+        "scenario_id": "bench-11-finance-policy-d4",
+        "subject": "Action Required: Annual SOX Policy Attestation Update - Fiscal Year Review",
+        "sender": "Corporate Compliance & Governance <governance-updates@nexus-audit-sim.local>",
+        "body": "Dear David,\n\nAs part of our ongoing commitment to regulatory compliance and our annual SOX attestation schedule, all Finance department personnel are required to review and re-certify adherence to the updated Internal Controls Framework v4.2.\n\nFollowing our recent audit committee review, Section 4 of the financial reporting guidelines has been revised regarding segregation of duties and variance documentation thresholds. You are requested to review the updated policy document and complete your digital attestation before the close of the current business cycle.\n\nPlease access the portal to review the changes and submit your sign-off: [SIMULATED LINK: Access Policy Attestation Portal]\n\nThank you for your prompt attention to this compliance requirement.\n\nBest regards,\n\nInternal Governance & Regulatory Affairs\nNexus Audit Corporation",
+        "metadata": {
+          "difficulty_rationale": "The email uses professional compliance terminology and realistic internal workflow context, making the subtle domain mismatch and authority pressure the only indicators.",
+          "tone": "formal",
+          "scenario_notes": "Tailored specifically for finance personnel under SOX compliance obligations with a subtle domain identifier."
+        },
+        "intended_indicators": [
+          "authority_impersonation",
+          "suspicious_link",
+          "urgency"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:40.104045Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "f9e84f3c-bd8b-43ff-b603-327d20011977",
+        "generation_id": "7ca65ba7-10de-4c5b-adea-c8468bb7b49d",
+        "realism_score": 95.0,
+        "relevance_score": 98.0,
+        "difficulty_score": 92.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain suffix 'nexus-audit-sim.local' explicitly exposes the simulation nature to technical recipients inspecting the header.",
+          "The timeline pressure 'before the close of the current business cycle' is appropriately subtle but could be misinterpreted as standard compliance framing rather than an artificial deadline."
+        ],
+        "overall_score": 96.7,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 96.7,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:46:37.417906Z"
+}

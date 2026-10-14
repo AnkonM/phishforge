@@ -1,0 +1,75 @@
+{
+  "run_id": "d4a838d4-a20b-4e02-b6df-7aab89bce3be",
+  "scenario": {
+    "scenario_id": "bench-05-ops-verify-d2",
+    "organization_context": "National distribution company, 600 workers. Operations supervisors manage inventory access through SAP ERP portals.",
+    "target_role": "operations",
+    "scenario_type": "account_verification",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "authority_impersonation"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "5c111bf2-624f-4338-8f32-6539f927460c",
+        "scenario_id": "bench-05-ops-verify-d2",
+        "subject": "ACTION REQUIRED: Verify Your Operations SAP Portal Account Access",
+        "sender": "ERP Administration Portal <admin-support@logi-sync-sim.local>",
+        "body": "Dear Operations Supervisor,\n\nAs part of our ongoing quarterly security compliance audit for all regional supply chain and distribution hubs, all active SAP ERP portal accounts used for inventory management require immediate verification.\n\nFailure to complete this mandatory verification within 48 hours will result in a temporary suspension of your inventory access credentials to prevent potential compliance violations.\n\nPlease proceed to the internal compliance portal to confirm your credentials and active warehouse ID:\n\n[SIMULATED LINK: Access SAP Verification Portal at https://sap-verify.logi-sync-sim.local/auth]\n\nThank you for your prompt attention to this matter to ensure uninterrupted warehouse operations.\n\nRegards,\n\nCentral ERP Compliance Committee\nApex Logistics Network",
+        "metadata": {
+          "difficulty_rationale": "Difficulty level 2 is achieved by using an unresolvable lookalike sender domain and a general sense of urgency regarding account suspension, which is noticeable upon closer inspection.",
+          "tone": "formal",
+          "scenario_notes": "Tailored for operations supervisors dealing with inventory access."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "authority_impersonation"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:21.630005Z"
+      },
+      "safety_result": {
+        "passed": false,
+        "status": "FAIL",
+        "findings": [
+          "Real brand impersonation in subject field: 'sap'"
+        ]
+      },
+      "verification": {
+        "verification_id": "0e9bf491-b1db-4a2f-9a02-7e82748ef3ba",
+        "generation_id": "5c111bf2-624f-4338-8f32-6539f927460c",
+        "realism_score": 88.0,
+        "relevance_score": 92.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "FAIL",
+        "safety_findings": [
+          "Real brand impersonation in subject field: 'sap'"
+        ],
+        "semantic_findings": [
+          "The sender domain 'logi-sync-sim.local' clearly exposes the simulation environment, making it easily identifiable upon close inspection.",
+          "The 48-hour suspension ultimatum provides a moderately standard compliance pressure tactic appropriate for a level 2 difficulty."
+        ],
+        "overall_score": 94.0,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 94.0,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:45:19.338559Z"
+}

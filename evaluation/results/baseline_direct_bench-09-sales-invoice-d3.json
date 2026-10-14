@@ -1,0 +1,71 @@
+{
+  "run_id": "20bcb9ca-79c3-45b4-a68e-cc45ea82c9fa",
+  "scenario": {
+    "scenario_id": "bench-09-sales-invoice-d3",
+    "organization_context": "Enterprise cloud consultancy, 250 employees. Sales account directors finalize client contracts with custom milestone billing schedules.",
+    "target_role": "sales",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "642784b6-3c84-4b74-ac50-e4813b58eaa5",
+        "scenario_id": "bench-09-sales-invoice-d3",
+        "subject": "Updated Milestone Billing Schedule - Apex Logistics Q3 Contract",
+        "sender": "Director of Finance <finance-director@apex-logistics-sim.local>",
+        "body": "Hi team,\n\nI just finished reviewing the preliminary milestone billing schedule for the Apex Logistics account expansion. Following our executive alignment call this morning, we need to adjust the invoicing terms to reflect the accelerated delivery phases we agreed upon.\n\nPlease review the updated milestone distribution and confirm your alignment by end of day so we can lock in the contract terms before the client reviews it tomorrow morning.\n\n[SIMULATED LINK: View Updated Milestone Schedule]\n\nRegards,\n\nDirector of Finance\nApex Logistics Enterprise Services",
+        "metadata": {
+          "difficulty_rationale": "Level 3 difficulty is achieved by using realistic internal workflow terminology and a plausible executive framing, with the primary indicators resting on the external sender domain mismatch and the requirement for immediate action via an external link.",
+          "tone": "semi-formal",
+          "scenario_notes": "Tailored specifically for sales account directors dealing with custom contract billing schedules."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:14.964837Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "844c9e65-9375-4abf-863c-f438eae66e77",
+        "generation_id": "642784b6-3c84-4b74-ac50-e4813b58eaa5",
+        "realism_score": 88.0,
+        "relevance_score": 92.0,
+        "difficulty_score": 85.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain 'apex-logistics-sim.local' clearly gives away the simulation context, which might be too overt for advanced targets if noticed.",
+          "The transition of a client's finance director directly emailing internal sales regarding custom milestone billing lacks slight contextual grounding on how the billing schedule was negotiated."
+        ],
+        "overall_score": 92.0,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 92.0,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:46:11.842595Z"
+}

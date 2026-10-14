@@ -1,0 +1,85 @@
+{
+  "run_id": "d5fe180a-a6b1-4276-8c22-475787b4a5f8",
+  "scenario": {
+    "scenario_id": "bench-11-finance-policy-d4",
+    "organization_context": "Multinational audit corporation, 5000 employees. Finance department operates under strict SOX compliance guidelines with annual mandatory policy re-attestation.",
+    "target_role": "finance",
+    "scenario_type": "internal_policy_update",
+    "difficulty": 4,
+    "language": "en",
+    "desired_indicators": [
+      "authority_impersonation",
+      "suspicious_link",
+      "urgency"
+    ],
+    "prohibited_elements": [
+      "spelling_errors",
+      "generic_greeting"
+    ],
+    "simulation_constraints": {
+      "require_subtle_pretext": "True"
+    }
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "a2ac7d48-9c80-43d4-b6ef-116fee02f1b5",
+        "scenario_id": "bench-11-finance-policy-d4",
+        "subject": "Action Required: Annual SOX Policy Attestation Update for Finance",
+        "sender": "Governance & Compliance Office <compliance-noreply@aurelius-audit.example-corp-sim.local>",
+        "body": "Dear Jonathan,\n\nAs part of our ongoing commitment to regulatory standards and Sarbanes-Oxley (SOX) compliance, the annual policy re-attestation window for the Finance directorate has officially opened. \n\nGiven recent updates to our internal control frameworks regarding cross-border transaction logging, all senior finance personnel are required to review and sign the revised attestation document within the standard 48-hour compliance verification cycle.\n\nPlease review the updated guidelines and complete your attestation via the secure governance portal:\n\n[SIMULATED LINK: Aurelius Compliance Portal - SOX Attestation]\n\nFailure to complete this re-attestation prior to the audit lock window may result in a temporary suspension of system provisioning privileges for financial reporting modules.\n\nThank you for your prompt attention to this matter.\n\nRegards,\n\nCompliance & Regulatory Oversight Directorate\nAurelius Global Audit Corp",
+        "metadata": {
+          "difficulty_rationale": "Level 4 sophistication is achieved by using authentic corporate and regulatory terminology for a multinational audit firm, framing the request around a standard compliance requirement with subtle time pressure rather than overt threats.",
+          "tone": "formal",
+          "scenario_notes": "Uses a fictional organization name and an unresolvable local domain to adhere strictly to safety constraints while maintaining high contextual realism."
+        },
+        "intended_indicators": [
+          "authority_impersonation",
+          "suspicious_link",
+          "urgency"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:46:34.684830Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "86908184-307a-4960-88e8-5ed0873f8049",
+        "generation_id": "a2ac7d48-9c80-43d4-b6ef-116fee02f1b5",
+        "realism_score": 95.0,
+        "relevance_score": 98.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain suffix '.example-corp-sim.local' clearly exposes the simulation context if inspected closely, though it remains appropriate for a safe training environment."
+        ],
+        "overall_score": 97.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 97.2,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The sender domain suffix '.example-corp-sim.local' clearly exposes the simulation context if inspected closely, though it remains appropriate for a safe training environment."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The sender domain suffix '.example-corp-sim.local' clearly exposes the simulation context if inspected closely, though it remains appropriate for a safe training environment.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 97.2,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:46:31.203920Z"
+}

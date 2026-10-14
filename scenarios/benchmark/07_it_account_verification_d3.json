@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-07-it-verify-d3",
+  "organization_context": "Financial technology firm, 450 engineers. IT administrators manage production AWS clusters with mandatory Duo MFA token rotation.",
+  "target_role": "it",
+  "scenario_type": "account_verification",
+  "difficulty": 3,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "authority_impersonation",
+    "suspicious_link"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

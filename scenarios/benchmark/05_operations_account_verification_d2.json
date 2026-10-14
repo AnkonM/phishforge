@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-05-ops-verify-d2",
+  "organization_context": "National distribution company, 600 workers. Operations supervisors manage inventory access through SAP ERP portals.",
+  "target_role": "operations",
+  "scenario_type": "account_verification",
+  "difficulty": 2,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "suspicious_link",
+    "authority_impersonation"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

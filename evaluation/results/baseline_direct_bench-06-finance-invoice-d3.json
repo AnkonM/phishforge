@@ -1,0 +1,71 @@
+{
+  "run_id": "64b8aa7d-23c9-48de-affb-7f28a5649815",
+  "scenario": {
+    "scenario_id": "bench-06-finance-invoice-d3",
+    "organization_context": "Mid-size UK professional services firm, ~350 employees. Finance team uses SAP for AP processing. Invoices above £10,000 require dual approval.",
+    "target_role": "finance",
+    "scenario_type": "invoice_fraud",
+    "difficulty": 3,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "authority_impersonation",
+      "suspicious_link"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "16e6f7d6-bddf-4f7e-96d1-4034d1335855",
+        "scenario_id": "bench-06-finance-invoice-d3",
+        "subject": "Urgent: Pending SAP Invoice Processing Approval - Ref #INV-88342",
+        "sender": "Arthur Pendelton <arthur.pendelton@apex-services-uk.example-corp-sim.local>",
+        "body": "Dear Finance Team,\n\nI am writing to urgently escalate an overdue invoice payment for our primary London facilities contractor, Meridian Solutions Ltd, under reference #INV-88342 for £14,500.\n\nDue to the pending month-end reporting deadline, the standard dual-approval routing in our SAP portal has been temporarily bypassed for this specific transaction to avoid a service interruption. Our Director of Finance has already provided verbal sign-off.\n\nTo ensure prompt disbursement before the end of the business day, please review and release the payment immediately using the updated vendor bank routing instructions available via the secure AP portal below:\n\n[SIMULATED LINK: Secure AP Portal Invoice Review]\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n\nArthur Pendelton\nSenior Operations Manager\nApex Professional Services Ltd",
+        "metadata": {
+          "difficulty_rationale": "Level 3 difficulty is achieved by utilizing standard corporate finance terminology and a plausible internal escalation scenario, with subtle indicators such as bypassed dual-approval workflow and a slightly modified internal domain.",
+          "tone": "formal",
+          "scenario_notes": "Tailored for UK professional services finance team simulating an SAP invoice fraud attempt."
+        },
+        "intended_indicators": [
+          "urgency",
+          "authority_impersonation",
+          "suspicious_link"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:36.021218Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "1cd5dec3-755f-4ee4-98d0-bff6cfe25a91",
+        "generation_id": "16e6f7d6-bddf-4f7e-96d1-4034d1335855",
+        "realism_score": 90.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The claim that dual-approval routing was temporarily bypassed for an invoice over £10,000 is a plausible policy exception under month-end pressure, but a vigilant finance professional might spot the policy violation.",
+          "The sender domain uses an explicit simulation indicator suffix (.example-corp-sim.local), which is appropriate for training but easily noticeable upon careful inspection."
+        ],
+        "overall_score": 95.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.2,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:45:33.126817Z"
+}

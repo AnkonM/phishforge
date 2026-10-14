@@ -1,0 +1,82 @@
+{
+  "run_id": "b5c803b0-2415-4441-8d1e-6eb848368679",
+  "scenario": {
+    "scenario_id": "bench-02-hr-policy-d1",
+    "organization_context": "Mid-size logistics firm, 400 employees. HR uses Workday for company-wide policy distribution.",
+    "target_role": "hr",
+    "scenario_type": "internal_policy_update",
+    "difficulty": 1,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "spelling_errors"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "aeaa78b8-ca9a-42b8-b56c-945003b58b92",
+        "scenario_id": "bench-02-hr-policy-d1",
+        "subject": "URGENT: Upadte your HR profile immediately or lose access",
+        "sender": "HR Depatment <hr-admin@logistics-update.sim-training.test>",
+        "body": "Dear Employee,\n\nWe have updated our company-wide policy regarding Workday payroll and benefits. All staff members are required to verfy their employee details within the next 24 hours to avoid suspension of account.\n\nPlease click the link below to complete the mandatory form right now:\n\n[SIMULATED LINK: Login to Workday Policy Portal at https://workday-verify.example-corp-sim.local]\n\nFailure to act fast will result in immediate termination of system access.\n\nThank you,\nHuman Resources Team",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 1 is achieved through multiple glaring red flags including severe misspellings like 'Upadte' and 'verfy', excessive urgency demanding 24-hour action, and an unverified external simulation link.",
+          "tone": "formal",
+          "scenario_notes": "Designed for HR target role using internal policy update scenario with explicit level 1 indicators."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "spelling_errors"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:17.822403Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "255f5f59-ecbb-47a5-b518-4a9227088026",
+        "generation_id": "aeaa78b8-ca9a-42b8-b56c-945003b58b92",
+        "realism_score": 75.0,
+        "relevance_score": 85.0,
+        "difficulty_score": 100.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The spelling errors 'Upadte' in the subject line and 'verfy' in the body are overt and directly align with Level 1 obvious indicators.",
+          "The threat of immediate termination of system access for a routine HR profile update is exaggerated and highlights the phishing nature quickly."
+        ],
+        "overall_score": 90.0,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 90.0,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The spelling errors 'Upadte' in the subject line and 'verfy' in the body are overt and directly align with Level 1 obvious indicators.",
+          "The threat of immediate termination of system access for a routine HR profile update is exaggerated and highlights the phishing nature quickly."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The spelling errors 'Upadte' in the subject line and 'verfy' in the body are overt and directly align with Level 1 obvious indicators.\n2. The threat of immediate termination of system access for a routine HR profile update is exaggerated and highlights the phishing nature quickly.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 90.0,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:44:15.523081Z"
+}

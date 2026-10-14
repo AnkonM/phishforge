@@ -1,0 +1,84 @@
+{
+  "run_id": "24c4b59d-aa4b-4dfd-8191-6eabbf61e2d8",
+  "scenario": {
+    "scenario_id": "bench-05-ops-verify-d2",
+    "organization_context": "National distribution company, 600 workers. Operations supervisors manage inventory access through SAP ERP portals.",
+    "target_role": "operations",
+    "scenario_type": "account_verification",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "authority_impersonation"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "3be0887e-053c-441b-9f7a-b88e82497f80",
+        "scenario_id": "bench-05-ops-verify-d2",
+        "subject": "Action Required: Verify SAP ERP Inventory Access Permissions",
+        "sender": "Logistics Systems Admin <admin-portal@logistics-update.example-corp-sim.local>",
+        "body": "Dear Operations Supervisor,\n\nAs part of our routine quarterly access review, all operations supervisors must verify their current permission levels for the SAP ERP inventory portals to maintain compliance standards.\n\nFailure to complete this verification within 24 hours may result in temporary suspension of your inventory management credentials.\n\nPlease verify your account details immediately by accessing the verification portal below:\n\n[SIMULATED LINK: Verify SAP ERP Access - https://sap-portal-verify.example-corp-sim.local]\n\nThank you for your prompt attention to this matter.\n\nRegards,\n\nLogistics Systems Administration Team",
+        "metadata": {
+          "difficulty_rationale": "Difficulty level 2 is achieved through a moderately urgent deadline and a sender domain that mimics an internal system update but uses an unresolvable simulation TLD.",
+          "tone": "formal",
+          "scenario_notes": "Tailored to operations supervisors managing inventory access via ERP portals."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "authority_impersonation"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:17.260664Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "d54f48da-1a15-4bd5-b81e-43f9efa9da48",
+        "generation_id": "3be0887e-053c-441b-9f7a-b88e82497f80",
+        "realism_score": 85.0,
+        "relevance_score": 90.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The 24-hour expiration window provides a standard moderate urgency pressure point appropriate for a Level 2 simulation.",
+          "The sender domain correctly utilizes a simulation TLD (.example-corp-sim.local) which is easily caught by an attentive reader.",
+          "The reference to SAP ERP inventory access perfectly targets the operations supervisor workflow specified in the organization context."
+        ],
+        "overall_score": 92.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 92.8,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The 24-hour expiration window provides a standard moderate urgency pressure point appropriate for a Level 2 simulation.",
+          "The sender domain correctly utilizes a simulation TLD (.example-corp-sim.local) which is easily caught by an attentive reader.",
+          "The reference to SAP ERP inventory access perfectly targets the operations supervisor workflow specified in the organization context."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The 24-hour expiration window provides a standard moderate urgency pressure point appropriate for a Level 2 simulation.\n2. The sender domain correctly utilizes a simulation TLD (.example-corp-sim.local) which is easily caught by an attentive reader.\n3. The reference to SAP ERP inventory access perfectly targets the operations supervisor workflow specified in the organization context.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 92.8,
+        "score_delta": null,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:45:15.062511Z"
+}

@@ -1,0 +1,20 @@
+{
+  "scenario_id": "bench-11-finance-policy-d4",
+  "organization_context": "Multinational audit corporation, 5000 employees. Finance department operates under strict SOX compliance guidelines with annual mandatory policy re-attestation.",
+  "target_role": "finance",
+  "scenario_type": "internal_policy_update",
+  "difficulty": 4,
+  "language": "en",
+  "desired_indicators": [
+    "authority_impersonation",
+    "suspicious_link",
+    "urgency"
+  ],
+  "prohibited_elements": [
+    "spelling_errors",
+    "generic_greeting"
+  ],
+  "simulation_constraints": {
+    "require_subtle_pretext": "True"
+  }
+}

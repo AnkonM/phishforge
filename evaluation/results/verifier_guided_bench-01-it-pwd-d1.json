@@ -1,0 +1,137 @@
+{
+  "run_id": "cb70e29a-f677-451c-b848-c980568f1027",
+  "scenario": {
+    "scenario_id": "bench-01-it-pwd-d1",
+    "organization_context": "Global tech consulting firm, 1200 employees. IT department uses Okta for SSO.",
+    "target_role": "it",
+    "scenario_type": "password_alert",
+    "difficulty": 1,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "generic_greeting"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "verifier_guided",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "a1cb2130-4da0-4350-900c-d04421694d0e",
+        "scenario_id": "bench-01-it-pwd-d1",
+        "subject": "URGENT: Your password expires today! Update now!!!",
+        "sender": "System Admin <admin@support-okta-login.example-corp-sim.local>",
+        "body": "Dear User,\n\nYour network password will expire in 2 hours! If you dont change it right now your account will be locked forever and you will lose access to all IT systems!\n\nClick here immediately to reset your password: [SIMULATED LINK: Password Reset Portal]\n\nThanks,\nThe IT Team",
+        "metadata": {
+          "difficulty_rationale": "The email includes glaring red flags such as excessive exclamation marks, a generic greeting, a suspicious external domain, and extreme urgency.",
+          "tone": "informal",
+          "scenario_notes": "Designed as a Level 1 difficulty training example for IT staff awareness."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "generic_greeting"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:04.250526Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "1afdc61c-ed78-4dc4-ab01-569827eb987c",
+        "generation_id": "a1cb2130-4da0-4350-900c-d04421694d0e",
+        "realism_score": 45.0,
+        "relevance_score": 50.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The body text contains grammatical mistakes such as 'dont' instead of 'don't', which degrades overall realism for a professional tech firm context.",
+          "The sender address uses a simulated local-only TLD (.local) which is unrealistic for external-facing cloud identity providers like Okta.",
+          "The threat that the account will be 'locked forever' is overly dramatic and uncharacteristic of standard IT password expiration warnings."
+        ],
+        "overall_score": 72.8,
+        "pass_fail": "REVISE",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 72.8,
+      "refinement": {
+        "iteration_number": 1,
+        "prior_score": null,
+        "weaknesses": [
+          "The body text contains grammatical mistakes such as 'dont' instead of 'don't', which degrades overall realism for a professional tech firm context.",
+          "The sender address uses a simulated local-only TLD (.local) which is unrealistic for external-facing cloud identity providers like Okta.",
+          "The threat that the account will be 'locked forever' is overly dramatic and uncharacteristic of standard IT password expiration warnings."
+        ],
+        "revision_instructions": "Please address the following specific weaknesses identified in the previous generation:\n1. The body text contains grammatical mistakes such as 'dont' instead of 'don't', which degrades overall realism for a professional tech firm context.\n2. The sender address uses a simulated local-only TLD (.local) which is unrealistic for external-facing cloud identity providers like Okta.\n3. The threat that the account will be 'locked forever' is overly dramatic and uncharacteristic of standard IT password expiration warnings.\n\nPreserve the scenario intent (target role, organization context, difficulty target) and address ONLY the listed weaknesses above. Do not introduce real company names or real URLs.",
+        "new_score": 72.8,
+        "score_delta": null,
+        "termination_reason": null
+      }
+    },
+    {
+      "iteration_number": 2,
+      "simulation": {
+        "generation_id": "26729fe3-84f3-4e97-930f-e9fab73b9612",
+        "scenario_id": "bench-01-it-pwd-d1",
+        "subject": "Urgent: Action Required to Reset Your Okta Single Sign-On Password",
+        "sender": "Global Tech IT Helpdesk <support@okta-auth-sim-training.test>",
+        "body": "Dear User,\n\nOur system records indicate that your Okta single sign-on credentials for your global tech consulting account are set to expire today. If you do not update your password immediately, your access to internal resources will be temporarily suspended until manual intervention is completed by the IT department.\n\nPlease click the link below to update your credentials:\n\n[SIMULATED LINK: Update Okta Password - https://auth.okta-auth-sim-training.test/reset]\n\nThank you,\nIT Security Team",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 1 is achieved through obvious red flags including a generic greeting, external-looking training domain for an internal SSO tool, and immediate urgency demanding credential updates.",
+          "tone": "semi-formal",
+          "scenario_notes": "Grammar corrected, realistic cloud TLD used, and overly dramatic lockout threat replaced with standard suspension framing to match professional IT communications."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "generic_greeting"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:09.087623Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "1cefe479-3214-4dc0-a839-d9ccb147ede5",
+        "generation_id": "26729fe3-84f3-4e97-930f-e9fab73b9612",
+        "realism_score": 85.0,
+        "relevance_score": 90.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [],
+        "overall_score": 92.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 92.8,
+      "refinement": {
+        "iteration_number": 2,
+        "prior_score": 72.8,
+        "weaknesses": [],
+        "revision_instructions": "Maintain current simulation realism and role relevance. Ensure all scenario indicators and safety constraints are fully preserved.",
+        "new_score": 92.8,
+        "score_delta": 20.0,
+        "termination_reason": "PASS"
+      }
+    }
+  ],
+  "terminal_state": "PASS",
+  "created_at": "2026-08-28T19:44:01.907075Z"
+}

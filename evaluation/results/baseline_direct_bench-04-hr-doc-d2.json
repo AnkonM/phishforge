@@ -1,0 +1,70 @@
+{
+  "run_id": "b59da2a0-e81f-4f75-83ec-d9b2c5086766",
+  "scenario": {
+    "scenario_id": "bench-04-hr-doc-d2",
+    "organization_context": "Healthcare staffing agency, 300 staff. HR coordinates quarterly payroll compliance verifications via BambooHR.",
+    "target_role": "hr",
+    "scenario_type": "hr_document_request",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "authority_impersonation",
+      "suspicious_link",
+      "urgency"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "dd400159-9eab-4cf3-973b-2a58e3cada09",
+        "scenario_id": "bench-04-hr-doc-d2",
+        "subject": "Action Required: Q3 Payroll Compliance Verification - BambooHR Update",
+        "sender": "Director of People Operations <hr-compliance@bamboohr-updates.example-corp-sim.local>",
+        "body": "Dear HR Team,\n\nAs part of our upcoming quarterly audit, we need all HR personnel to complete the Q3 payroll compliance verification for our healthcare staffing personnel records.\n\nPlease review and sign off on the updated staff classification guidelines via the secure portal below by end of day tomorrow to ensure compliance with our agency standards.\n\n[SIMULATED LINK: Access BambooHR Compliance Portal]\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n\nDirector of People Operations\nPeople & Culture Department",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 2 is achieved by using an external domain disguised as BambooHR and a moderate urgency timeframe, which a moderately attentive reader can spot upon inspecting the sender address.",
+          "tone": "semi-formal",
+          "scenario_notes": "Tailored for healthcare staffing HR context using BambooHR terminology without real domains."
+        },
+        "intended_indicators": [
+          "authority_impersonation",
+          "suspicious_link",
+          "urgency"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:45:12.793444Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "affc2095-ff3b-4dbb-8b23-e8631b02d6f0",
+        "generation_id": "dd400159-9eab-4cf3-973b-2a58e3cada09",
+        "realism_score": 90.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The sender domain suffix 'example-corp-sim.local' explicitly signals a simulation domain, making it overly obvious if previewed closely."
+        ],
+        "overall_score": 95.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.2,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:44:38.368215Z"
+}

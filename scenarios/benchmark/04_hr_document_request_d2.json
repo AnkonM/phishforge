@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-04-hr-doc-d2",
+  "organization_context": "Healthcare staffing agency, 300 staff. HR coordinates quarterly payroll compliance verifications via BambooHR.",
+  "target_role": "hr",
+  "scenario_type": "hr_document_request",
+  "difficulty": 2,
+  "language": "en",
+  "desired_indicators": [
+    "authority_impersonation",
+    "suspicious_link",
+    "urgency"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

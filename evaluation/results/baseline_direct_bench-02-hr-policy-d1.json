@@ -1,0 +1,71 @@
+{
+  "run_id": "75181297-8b20-43ea-98c0-a93cfedc448e",
+  "scenario": {
+    "scenario_id": "bench-02-hr-policy-d1",
+    "organization_context": "Mid-size logistics firm, 400 employees. HR uses Workday for company-wide policy distribution.",
+    "target_role": "hr",
+    "scenario_type": "internal_policy_update",
+    "difficulty": 1,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "spelling_errors"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "4285c9ff-7290-4253-99d7-55cd043cb9ea",
+        "scenario_id": "bench-02-hr-policy-d1",
+        "subject": "URGENT: Updat your Workday HR policies immeditly",
+        "sender": "HR Policy Team <hr-admin@logistics-update.sim-training.test>",
+        "body": "Dear Employee,\n\nWe have updated the company HR policies regarding logistics operations and benifits. All staff must review and agree to these changes today or your account will be locked.\n\nPlease click the link below to review the document:\n\n[SIMULATED LINK: Workday HR Policy Login]\n\nThank you,\nHR Department",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 1 is achieved through multiple glaring red flags including misspellings, excessive urgency, and a generic greeting.",
+          "tone": "formal",
+          "scenario_notes": "Targeted at HR context within a logistics firm, using obvious training indicators."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "spelling_errors"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:22.282581Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "1812d3fe-f7f2-4e82-b49a-af603792f9b1",
+        "generation_id": "4285c9ff-7290-4253-99d7-55cd043cb9ea",
+        "realism_score": 75.0,
+        "relevance_score": 80.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [
+          "The spelling errors 'Updat' in the subject and 'immeditly' and 'benifits' in the body are overt and directly contribute to the Level 1 difficulty design.",
+          "The sender domain 'logistics-update.sim-training.test' clearly exposes an external or synthetic address, fitting the low-difficulty criteria."
+        ],
+        "overall_score": 87.8,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 87.8,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:44:20.059107Z"
+}

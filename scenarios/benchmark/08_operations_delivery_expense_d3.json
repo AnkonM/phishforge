@@ -1,0 +1,15 @@
+{
+  "scenario_id": "bench-08-ops-delivery-d3",
+  "organization_context": "Global manufacturing plant, 800 employees. Operations logistics team monitors heavy machinery shipments through DHL freight trackers.",
+  "target_role": "operations",
+  "scenario_type": "delivery_expense_notification",
+  "difficulty": 3,
+  "language": "en",
+  "desired_indicators": [
+    "urgency",
+    "suspicious_link",
+    "unusual_request"
+  ],
+  "prohibited_elements": [],
+  "simulation_constraints": {}
+}

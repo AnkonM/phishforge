@@ -1,0 +1,68 @@
+{
+  "run_id": "424be529-e489-4797-8d6f-f78cc016817f",
+  "scenario": {
+    "scenario_id": "bench-03-sales-delivery-d2",
+    "organization_context": "B2B SaaS company, 150 employees. Sales reps regularly receive shipment and client gift delivery notices.",
+    "target_role": "sales",
+    "scenario_type": "delivery_expense_notification",
+    "difficulty": 2,
+    "language": "en",
+    "desired_indicators": [
+      "urgency",
+      "suspicious_link",
+      "unusual_request"
+    ],
+    "prohibited_elements": [],
+    "simulation_constraints": {}
+  },
+  "condition": "baseline_direct",
+  "iterations": [
+    {
+      "iteration_number": 1,
+      "simulation": {
+        "generation_id": "694eef25-877f-4c67-b493-a9150271ddb9",
+        "scenario_id": "bench-03-sales-delivery-d2",
+        "subject": "Action Required: Outstanding Delivery Fee for Q3 Client Promotional Box",
+        "sender": "Global Logistics Express <shipping-notifications@logistics-update-sim.local>",
+        "body": "Dear Sales Team Member,\n\nWe attempted to deliver a promotional client gift package to your office address on behalf of Nexus Solutions. However, a local handling fee of $14.50 is required before the final courier dispatch can be completed.\n\nTo ensure your client gift arrives before the upcoming quarterly meeting, please settle this balance immediately by verifying your details and confirming payment through our secure portal:\n\n[SIMULATED LINK: https://portal.logistics-update-sim.local/pay-fee]\n\nFailure to settle this fee within 24 hours will result in the package being returned to the sender.\n\nBest regards,\nCustomer Dispatch Services\nGlobal Logistics Express",
+        "metadata": {
+          "difficulty_rationale": "Difficulty 2 is achieved through a moderately suspicious sender domain and a minor fee payment request that stands out upon closer inspection.",
+          "tone": "semi-formal",
+          "scenario_notes": "Tailored to sales reps receiving client gift notices, incorporating a low-stakes payment request."
+        },
+        "intended_indicators": [
+          "urgency",
+          "suspicious_link",
+          "unusual_request"
+        ],
+        "model": "models/gemini-3.5-flash-lite",
+        "prompt_version": "v1",
+        "timestamp": "2026-08-28T19:44:31.558825Z"
+      },
+      "safety_result": {
+        "passed": true,
+        "status": "PASS",
+        "findings": []
+      },
+      "verification": {
+        "verification_id": "6f6dfc4b-0a0c-4fab-aa25-1051b1dc9ba8",
+        "generation_id": "694eef25-877f-4c67-b493-a9150271ddb9",
+        "realism_score": 90.0,
+        "relevance_score": 95.0,
+        "difficulty_score": 95.0,
+        "indicator_score": 100.0,
+        "language_score": 100.0,
+        "safety_status": "PASS",
+        "safety_findings": [],
+        "semantic_findings": [],
+        "overall_score": 95.2,
+        "pass_fail": "PASS",
+        "verifier_version": "rules-v1+llm-v1"
+      },
+      "score": 95.2,
+      "refinement": null
+    }
+  ],
+  "terminal_state": "GENERATED_UNVERIFIED",
+  "created_at": "2026-08-28T19:44:29.164139Z"
+}

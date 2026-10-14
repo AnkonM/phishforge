@@ -176,4 +176,78 @@ pytest tests/integration/ -v
 
 Per Document A v2 §16 and Document C v2:
 - **Current Scope**: CLI-first closed-loop generation, safety gating, hybrid verification, scoring, refinement controller, JSON artifact storage, and test suites.
-- **Future Scope (Deferred)**: Web UI, SQLite persistence, automated evaluation/benchmark harnesses, multi-model comparative baselines, and human evaluation trials.
+- **Future Scope (Deferred)**: ~~Web UI~~ (see **Console** below, added as a separate additive
+  layer — the pipeline itself is unchanged), SQLite persistence, multi-model comparative
+  baselines, and human evaluation trials.
+
+---
+
+## Console
+
+A web UI and dashboard for PhishForge: FastAPI backend (`server/`) wrapping the pipeline above
+with **zero changes to any file in `core/`, `models/`, `config/`, or `cli.py`**, and a React +
+TypeScript frontend (`web/`). See `docs/DECISIONS.md` for every judgment call and exactly why no
+core touchpoints were needed, `docs/API.md` for the endpoint/SSE contract, and `docs/DESIGN.md`
+for the visual design system.
+
+### Install
+
+```bash
+make install        # creates .venv, installs Python + server deps, npm installs web/
+```
+
+### Run — development (backend + frontend, both live-reloading)
+
+```bash
+make dev             # Live mode if GEMINI_API_KEY is set in .env, else Demo mode
+make demo            # Forces Demo mode (mock provider) regardless of key presence
+```
+Opens the frontend at `http://127.0.0.1:5173` (proxies `/api` to the backend at `:8000`).
+
+### Run — production (one process serves the built SPA + API)
+
+```bash
+make start           # builds web/dist, then serves it from the same FastAPI process on :8000
+```
+
+### Seed historical data
+
+```bash
+make seed            # imports the 24 real evaluation/results/*.json runs into runs/ (idempotent)
+```
+
+### Test
+
+```bash
+make test            # original pipeline suite (175 tests, unmodified) + server (26 tests) + web (tsc/lint/vitest)
+```
+
+Demo mode is fully offline and deterministic — four scripted scenarios (first-pass PASS,
+REVISE→PASS replaying the paper's 72.8→92.8 worked example, a safety-gate rejection, and a
+FAILED_TO_CONVERGE plateau) exercise every terminal state and every page without ever calling
+the live Gemini API, which is also how all automated verification works.
+
+### Screenshots
+
+Captured via `web/e2e/smoke.cjs` (Playwright) — Studio (live pipeline run), Runs, Dashboard, and
+Settings & About, each in light/dark theme at desktop and tablet widths. Not committed to the
+repo (generated artifacts); run the script locally against `make demo` to regenerate them under
+`web/e2e/screenshots/`.
+
+### Pages
+
+- **Studio** — scenario builder (with the 12 benchmark presets one click away), a
+  Verifier-guided / Direct-baseline / Compare mode switch, and the live pipeline view: a 5-stage
+  stepper, an email preview card (always watermarked "SIMULATION," never a clickable link),
+  Safety Gate / Verifier / Score panels, and the iteration convergence chart.
+- **Runs** — searchable/filterable history of every stored run, with delete, download, re-run,
+  and two-run compare actions.
+- **Run Detail** — the same shared components as Studio's live view, replayed from a stored
+  `RunRecord`, plus a raw-JSON toggle.
+- **Dashboard** — KPI cards, terminal-state distribution, a safety-leakage chart (reproduces the
+  paper's 0% vs. 25% figures from the 24 imported real runs), quality-by-condition, score and
+  iteration histograms, role/difficulty breakdowns, and the 12-preset × 2-condition benchmark
+  runner (behind an explicit confirmation dialog, since Live mode makes 24 real API calls).
+- **Settings & About** — provider status and a reachability test, read-only pipeline
+  configuration, the Live/Demo toggle, an inline-SVG architecture diagram, and the paper's own
+  stated limitations.

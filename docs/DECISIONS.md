@@ -116,3 +116,40 @@ Every seam the console needs already existed in the pipeline, built for its own 
     `python -m server.main` process, including the exact 72.8→92.8 replay). Fixed by switching the
     whole server test suite to `httpx.AsyncClient` + `pytest-asyncio`, so one event loop stays
     alive for an entire async test function (matching real server behavior) instead of per-call.
+
+## Frontend
+
+12. **React 18, not the Vite default.** `npm create vite@latest` scaffolds React 19 by default;
+    the task specifies React 18, so `react`/`react-dom`/`@types/react*` were pinned down to
+    `^18.3.1` immediately after scaffolding. Confirmed via `npm ls react react-dom` that nothing
+    in the dependency tree pulled 19 back in.
+13. **Tailwind v4 + `@tailwindcss/vite`.** No `tailwind.config.js` — v4 is CSS-first
+    (`@import 'tailwindcss'` in `src/styles/index.css`); all design tokens live in
+    `src/styles/tokens.css` as plain CSS custom properties, referenced directly in `style={}`
+    props rather than through Tailwind's theme config, so the same tokens drive Recharts styling
+    too (see docs/DESIGN.md).
+14. **`oxlint` instead of ESLint.** Also a `create-vite` default for this template version; kept
+    rather than swapped for ESLint, since it already enforces the relevant React-hooks/
+    fast-refresh rules and runs clean (`make test-web`). Two `only-export-components` warnings
+    were fixed by moving `validateScenario`/`EMPTY_SCENARIO` out of `ScenarioForm.tsx` into
+    `lib/scenarioDefaults.ts`, rather than suppressed.
+15. **`run_id` is minted by the server, not derived from `run_scenario()`'s return value — see
+    item 5 above.** This is the single most important frontend-adjacent fix: it was caught by
+    actually driving the API end-to-end with `curl` before writing any frontend code (`GET
+    /api/runs/{id}` 404'd for an id the client had just been handed), not by reading the code.
+16. **Playwright installed cleanly in this environment** (`npx playwright install chromium`,
+    without `--with-deps` since there's no sudo) and was used for both the required E2E smoke
+    pass and the visual screenshot review — the task's "if it installs cleanly" branch, not the
+    HTTP+SSE fallback.
+17. **A real rendering bug vs. a screenshot-timing artifact, told apart by evidence, not
+    assumption.** The first screenshot pass showed every Dashboard bar chart rendering as
+    near-zero height (`PASS: 12` should reach the top of a 0–12 axis; it looked almost flat).
+    Before treating this as a bug, the live `/api/stats` response was fetched directly and
+    compared against the chart — the underlying data was correct. Re-running the same screenshot
+    with a longer post-navigation wait (Recharts' default bar-grow animation hadn't finished at
+    400ms) produced fully-grown bars with identical data. The 400ms wait in
+    `web/e2e/smoke.cjs` was changed to 1500ms. Separately, that same screenshot pass did surface
+    one real bug while investigating: the terminal-state-distribution chart hardcoded
+    `fill="var(--color-signal)"` on every `<Bar>` regardless of condition, so "Direct baseline"
+    and "Verifier-guided" series were visually indistinguishable in the legend — fixed to
+    alternate Signal/Forge like the Quality-by-condition chart already did.

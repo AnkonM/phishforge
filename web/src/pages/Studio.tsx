@@ -82,132 +82,141 @@ export function Studio() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[380px_1fr]">
-      <div className="space-y-4">
-        <div>
-          <h1 className="text-lg font-semibold" style={{ color: 'var(--color-ink)' }}>
-            Studio
-          </h1>
-          <p className="text-sm" style={{ color: 'var(--color-ink-muted)' }}>
-            Build a scenario and watch the pipeline run live.{' '}
-            {health && (
-              <span className="font-medium" style={{ color: health.mode === 'demo' ? 'var(--color-revise)' : 'var(--color-pass)' }}>
-                {health.mode === 'demo' ? 'Demo mode' : 'Live mode'}
-              </span>
-            )}
-          </p>
-        </div>
-
-        {presets && presets.length > 0 && (
-          <div>
-            <p className="mb-1.5 text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
-              Benchmark presets
-            </p>
-            <PresetPicker presets={presets} onSelect={setSpec} />
-          </div>
-        )}
-
-        <ScenarioForm value={spec} onChange={setSpec} config={config} errors={errors} />
-
-        <div>
-          <p className="mb-1.5 text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
-            Run mode
-          </p>
-          <ModeSwitch value={mode} onChange={setMode} />
-        </div>
-
-        {health?.mode === 'demo' && (
-          <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
-              Demo script (optional)
-            </label>
-            <select
-              className="w-full rounded-[var(--radius-md)] border px-3 py-2 text-sm"
-              style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
-              value={demoScript}
-              onChange={(e) => setDemoScript(e.target.value as DemoScriptName | '')}
-            >
-              <option value="">Auto (based on difficulty)</option>
-              {DEMO_SCRIPTS.map((s) => (
-                <option key={s.value} value={s.value}>
-                  {s.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-
-        {submitError && <ErrorState message={submitError} />}
-
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={handleRun}
-            className="flex items-center gap-2 rounded-[var(--radius-md)] px-4 py-2 text-sm font-medium"
-            style={{ background: 'var(--color-signal)', color: 'var(--color-signal-ink)' }}
-          >
-            <Play size={14} aria-hidden /> Run scenario
-          </button>
-          {runId && !state.finished && (
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="flex items-center gap-2 rounded-[var(--radius-md)] border px-4 py-2 text-sm font-medium"
-              style={{ borderColor: 'var(--color-border)' }}
-            >
-              <Ban size={14} aria-hidden /> Cancel
-            </button>
-          )}
-        </div>
-      </div>
-
-      <div className="space-y-6">
-        {!runId && (
-          <div
-            className="flex h-64 items-center justify-center rounded-[var(--radius-lg)] border text-sm"
-            style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink-muted)' }}
-          >
-            Configure a scenario and run it to see the live pipeline here.
-          </div>
-        )}
-
-        {runId && (
-          <div className={compareRunId ? 'grid gap-6 lg:grid-cols-2' : ''}>
-            <RunPane title={compareRunId ? 'Verifier-guided' : undefined} state={state} config={config} />
-            {compareRunId && <RunPane title="Direct baseline" state={compareState} config={config} />}
-          </div>
-        )}
-
-        {runId && state.iterations.length > 0 && (
-          <section className="rounded-[var(--radius-lg)] border p-5" style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}>
-            <h2 className="mb-4 text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
-              Iteration convergence
-            </h2>
-            <ConvergenceView
-              iterations={state.iterations}
-              terminalState={state.terminalState}
-              passThreshold={config.pass_threshold}
-              reviseThreshold={config.revise_threshold}
-            />
-            {state.iterations.filter((i) => i.simulation).length >= 2 && (
-              <div className="mt-6 border-t pt-4" style={{ borderColor: 'var(--color-border)' }}>
-                <button
-                  type="button"
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--color-signal)' }}
-                  onClick={() => setDiffOpen((o) => !o)}
-                >
-                  {diffOpen ? 'Hide' : 'Show'} email diff between iterations
-                </button>
-                {diffOpen && (
-                  <div className="mt-3">
-                    <DiffView iterations={state.iterations} />
-                  </div>
+    <div className="h-full overflow-y-auto px-4 py-5 lg:h-full lg:overflow-hidden lg:p-0">
+      <div className="lg:grid lg:h-full lg:grid-cols-[340px_1fr] lg:items-stretch">
+        {/* LEFT: scenario configuration -- frozen in place; only scrolls internally
+            if its own content doesn't fit, independent of the right pane. */}
+        <div className="flex flex-col lg:h-full lg:overflow-hidden lg:border-r" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="space-y-3.5 lg:flex-1 lg:overflow-y-auto lg:px-5 lg:py-5">
+            <div>
+              <h1 className="text-lg font-semibold" style={{ color: 'var(--color-ink)' }}>
+                Studio
+              </h1>
+              <p className="text-sm" style={{ color: 'var(--color-ink-muted)' }}>
+                Build a scenario and watch the pipeline run live.{' '}
+                {health && (
+                  <span className="font-medium" style={{ color: health.mode === 'demo' ? 'var(--color-revise)' : 'var(--color-pass)' }}>
+                    {health.mode === 'demo' ? 'Demo mode' : 'Live mode'}
+                  </span>
                 )}
+              </p>
+            </div>
+
+            {presets && presets.length > 0 && (
+              <div>
+                <p className="mb-1.5 text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
+                  Benchmark presets
+                </p>
+                <PresetPicker presets={presets} onSelect={setSpec} />
               </div>
             )}
-          </section>
-        )}
+
+            <ScenarioForm value={spec} onChange={setSpec} config={config} errors={errors} />
+
+            <div>
+              <p className="mb-1.5 text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
+                Run mode
+              </p>
+              <ModeSwitch value={mode} onChange={setMode} />
+            </div>
+
+            {health?.mode === 'demo' && (
+              <div>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-ink-muted)' }}>
+                  Demo script (optional)
+                </label>
+                <select
+                  className="w-full rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
+                  style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
+                  value={demoScript}
+                  onChange={(e) => setDemoScript(e.target.value as DemoScriptName | '')}
+                >
+                  <option value="">Auto (based on difficulty)</option>
+                  {DEMO_SCRIPTS.map((s) => (
+                    <option key={s.value} value={s.value}>
+                      {s.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Pinned action bar -- always visible, never scrolls away. */}
+          <div className="shrink-0 space-y-2 border-t pt-3 lg:px-5 lg:pb-5 lg:pt-3" style={{ borderColor: 'var(--color-border)' }}>
+            {submitError && <ErrorState message={submitError} />}
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleRun}
+                className="flex items-center gap-2 rounded-[var(--radius-md)] px-4 py-2 text-sm font-medium"
+                style={{ background: 'var(--color-signal)', color: 'var(--color-signal-ink)' }}
+              >
+                <Play size={14} aria-hidden /> Run scenario
+              </button>
+              {runId && !state.finished && (
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className="flex items-center gap-2 rounded-[var(--radius-md)] border px-4 py-2 text-sm font-medium"
+                  style={{ borderColor: 'var(--color-border)' }}
+                >
+                  <Ban size={14} aria-hidden /> Cancel
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: live pipeline output -- the only pane that scrolls. */}
+        <div className="mt-6 space-y-6 lg:mt-0 lg:h-full lg:overflow-y-auto lg:px-5 lg:py-5">
+          {!runId && (
+            <div
+              className="flex h-64 items-center justify-center rounded-[var(--radius-lg)] border text-sm"
+              style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink-muted)' }}
+            >
+              Configure a scenario and run it to see the live pipeline here.
+            </div>
+          )}
+
+          {runId && (
+            <div className={compareRunId ? 'grid gap-6 lg:grid-cols-2' : ''}>
+              <RunPane title={compareRunId ? 'Verifier-guided' : undefined} state={state} config={config} />
+              {compareRunId && <RunPane title="Direct baseline" state={compareState} config={config} />}
+            </div>
+          )}
+
+          {runId && state.iterations.length > 0 && (
+            <section className="rounded-[var(--radius-lg)] border p-5" style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}>
+              <h2 className="mb-4 text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
+                Iteration convergence
+              </h2>
+              <ConvergenceView
+                iterations={state.iterations}
+                terminalState={state.terminalState}
+                passThreshold={config.pass_threshold}
+                reviseThreshold={config.revise_threshold}
+              />
+              {state.iterations.filter((i) => i.simulation).length >= 2 && (
+                <div className="mt-6 border-t pt-4" style={{ borderColor: 'var(--color-border)' }}>
+                  <button
+                    type="button"
+                    className="text-sm font-medium"
+                    style={{ color: 'var(--color-signal)' }}
+                    onClick={() => setDiffOpen((o) => !o)}
+                  >
+                    {diffOpen ? 'Hide' : 'Show'} email diff between iterations
+                  </button>
+                  {diffOpen && (
+                    <div className="mt-3">
+                      <DiffView iterations={state.iterations} />
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+          )}
+        </div>
       </div>
     </div>
   )

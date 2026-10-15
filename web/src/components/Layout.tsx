@@ -15,7 +15,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const [collapsed, setCollapsed] = useSidebar()
 
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row">
+    <div className="flex h-screen flex-col overflow-hidden lg:flex-row">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-[var(--color-surface)] focus:p-2"
@@ -23,7 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <nav
-        className={`flex shrink-0 flex-row items-center gap-4 border-b px-4 py-3 lg:flex-col lg:items-stretch lg:gap-1 lg:border-b-0 lg:border-r lg:py-5 lg:transition-[width] lg:duration-200 motion-reduce:lg:transition-none ${
+        className={`flex shrink-0 flex-row items-center gap-4 overflow-x-auto border-b px-4 py-3 lg:flex-col lg:items-stretch lg:gap-1 lg:overflow-visible lg:border-b-0 lg:border-r lg:py-5 lg:transition-[width] lg:duration-200 motion-reduce:lg:transition-none ${
           collapsed ? 'lg:w-16 lg:px-2' : 'lg:w-56 lg:px-3'
         }`}
         style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
@@ -77,10 +77,10 @@ export function Layout({ children }: { children: ReactNode }) {
           })}
         </div>
         <div className={`hidden lg:flex ${collapsed ? 'justify-center' : ''}`}>
-          <ThemeToggle />
+          <ThemeToggle collapsed={collapsed} />
         </div>
       </nav>
-      <main id="main-content" className="flex-1 px-4 py-5 lg:px-8 lg:py-6">
+      <main id="main-content" className="min-h-0 min-w-0 flex-1 overflow-hidden">
         {children}
       </main>
     </div>

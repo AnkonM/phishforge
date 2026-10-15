@@ -1,14 +1,34 @@
 import { Laptop, Moon, Sun } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme, type ThemePreference } from '../hooks/useTheme'
 
-const OPTIONS = [
-  { value: 'system' as const, icon: Laptop, label: 'System' },
-  { value: 'light' as const, icon: Sun, label: 'Light' },
-  { value: 'dark' as const, icon: Moon, label: 'Dark' },
+const OPTIONS: { value: ThemePreference; icon: typeof Laptop; label: string }[] = [
+  { value: 'system', icon: Laptop, label: 'System' },
+  { value: 'light', icon: Sun, label: 'Light' },
+  { value: 'dark', icon: Moon, label: 'Dark' },
 ]
 
-export function ThemeToggle() {
+export function ThemeToggle({ collapsed = false }: { collapsed?: boolean }) {
   const [pref, setPref] = useTheme()
+
+  if (collapsed) {
+    const idx = OPTIONS.findIndex((o) => o.value === pref)
+    const current = OPTIONS[idx]
+    const next = OPTIONS[(idx + 1) % OPTIONS.length]
+    const Icon = current.icon
+    return (
+      <button
+        type="button"
+        onClick={() => setPref(next.value)}
+        aria-label={`Theme: ${current.label}. Click to switch to ${next.label}.`}
+        title={`Theme: ${current.label} (click for ${next.label})`}
+        className="flex h-7 w-7 items-center justify-center rounded-[var(--radius-sm)] border"
+        style={{ borderColor: 'var(--color-border)', color: 'var(--color-ink-muted)' }}
+      >
+        <Icon size={14} aria-hidden />
+      </button>
+    )
+  }
+
   return (
     <div
       role="radiogroup"

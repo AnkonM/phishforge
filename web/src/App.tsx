@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { PageScroll } from './components/PageScroll'
 import { Dashboard } from './pages/Dashboard'
 import { RunDetail } from './pages/RunDetail'
 import { Runs } from './pages/Runs'
@@ -11,10 +12,38 @@ export function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Studio />} />
-        <Route path="/runs" element={<Runs />} />
-        <Route path="/runs/:runId" element={<RunDetail />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/runs"
+          element={
+            <PageScroll>
+              <Runs />
+            </PageScroll>
+          }
+        />
+        <Route
+          path="/runs/:runId"
+          element={
+            <PageScroll>
+              <RunDetail />
+            </PageScroll>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PageScroll>
+              <Dashboard />
+            </PageScroll>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PageScroll>
+              <Settings />
+            </PageScroll>
+          }
+        />
       </Routes>
     </Layout>
   )

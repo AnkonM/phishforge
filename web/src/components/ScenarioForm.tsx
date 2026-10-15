@@ -49,7 +49,7 @@ export function ScenarioForm({
   }
 
   return (
-    <form className="space-y-5" aria-label="Scenario builder">
+    <form className="space-y-3.5" aria-label="Scenario builder">
       <div>
         <label htmlFor={orgId} className="mb-1 block text-sm font-medium" style={{ color: 'var(--color-ink)' }}>
           Organization context
@@ -57,7 +57,7 @@ export function ScenarioForm({
         <textarea
           id={orgId}
           rows={2}
-          className="w-full rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+          className="w-full rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
           style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
           value={value.organization_context}
           onChange={(e) => set('organization_context', e.target.value)}
@@ -66,11 +66,11 @@ export function ScenarioForm({
         {errors?.organization_context && <FieldError message={errors.organization_context} />}
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="mb-1 block text-sm font-medium">Target role</label>
           <select
-            className="w-full rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+            className="w-full rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
             style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
             value={value.target_role}
             onChange={(e) => set('target_role', e.target.value as ScenarioSpecification['target_role'])}
@@ -85,7 +85,7 @@ export function ScenarioForm({
         <div>
           <label className="mb-1 block text-sm font-medium">Scenario type</label>
           <select
-            className="w-full rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+            className="w-full rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
             style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
             value={value.scenario_type}
             onChange={(e) => set('scenario_type', e.target.value)}
@@ -105,7 +105,7 @@ export function ScenarioForm({
         </label>
         <select
           id={difficultyId}
-          className="w-full rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+          className="w-full rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
           style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
           value={value.difficulty}
           onChange={(e) => set('difficulty', Number(e.target.value) as ScenarioSpecification['difficulty'])}
@@ -176,7 +176,7 @@ export function ScenarioForm({
       <div>
         <label className="mb-1 block text-sm font-medium">Language</label>
         <select
-          className="w-48 rounded-[var(--radius-md)] border px-3 py-2 text-sm"
+          className="w-48 rounded-[var(--radius-md)] border px-2.5 py-1.5 text-sm"
           style={{ borderColor: 'var(--color-border)', background: 'var(--color-surface)' }}
           value={value.language}
           onChange={(e) => set('language', e.target.value)}

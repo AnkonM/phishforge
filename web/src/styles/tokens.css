@@ -1,0 +1,135 @@
+:root {
+  /* Page / surface */
+  --color-page: #f2f4f7;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-border: #dde2e8;
+  --color-border-strong: #c3cad3;
+
+  /* Ink */
+  --color-ink: #121a24;
+  --color-ink-secondary: #4b5563;
+  --color-ink-muted: #8a94a3;
+
+  /* Brand */
+  --color-signal: #3e5fd9;
+  --color-signal-ink: #ffffff;
+  --color-forge: #b8702e;
+
+  /* Status (fixed -- never themed per-series, colorblind-safe validated set) */
+  --color-pass: #0ca30c;
+  --color-revise: #b7791f;
+  --color-fail: #c2552f;
+  --color-rejected-unsafe: #d03b3b;
+  --color-failed-to-converge: #9b4fc9;
+  --color-generation-failure: #0892a8;
+
+  --color-pass-bg: #e6f6e6;
+  --color-revise-bg: #fbf1de;
+  --color-fail-bg: #fbeae3;
+  --color-rejected-unsafe-bg: #fbe4e4;
+  --color-failed-to-converge-bg: #f3e8fa;
+  --color-generation-failure-bg: #e2f2f5;
+
+  /* Chart chrome */
+  --chart-surface: #fcfcfb;
+  --chart-grid: #e1e0d9;
+  --chart-axis: #c3c2b7;
+  --chart-text-muted: #898781;
+  --chart-line-primary: #3e5fd9;
+
+  /* Spacing scale (8px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-page: #0e1420;
+    --color-surface: #161d2b;
+    --color-surface-raised: #1b2335;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-strong: rgba(255, 255, 255, 0.18);
+
+    --color-ink: #edeff3;
+    --color-ink-secondary: #a7afbd;
+    --color-ink-muted: #6b7585;
+
+    --color-signal: #5b7cf0;
+    --color-forge: #d98a4a;
+
+    --color-failed-to-converge: #b47adf;
+    --color-generation-failure: #2fb0c7;
+
+    --color-pass-bg: #0f2a16;
+    --color-revise-bg: #332a12;
+    --color-fail-bg: #35200f;
+    --color-rejected-unsafe-bg: #351313;
+    --color-failed-to-converge-bg: #2a1c38;
+    --color-generation-failure-bg: #0f2a30;
+
+    --chart-surface: #161d2b;
+    --chart-grid: #2c2c2a;
+    --chart-axis: #383835;
+    --chart-text-muted: #a7afbd;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-page: #0e1420;
+  --color-surface: #161d2b;
+  --color-surface-raised: #1b2335;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+
+  --color-ink: #edeff3;
+  --color-ink-secondary: #a7afbd;
+  --color-ink-muted: #6b7585;
+
+  --color-signal: #5b7cf0;
+  --color-forge: #d98a4a;
+
+  --color-failed-to-converge: #b47adf;
+  --color-generation-failure: #2fb0c7;
+
+  --color-pass-bg: #0f2a16;
+  --color-revise-bg: #332a12;
+  --color-fail-bg: #35200f;
+  --color-rejected-unsafe-bg: #351313;
+  --color-failed-to-converge-bg: #2a1c38;
+  --color-generation-failure-bg: #0f2a30;
+
+  --chart-surface: #161d2b;
+  --chart-grid: #2c2c2a;
+  --chart-axis: #383835;
+  --chart-text-muted: #a7afbd;
+
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
